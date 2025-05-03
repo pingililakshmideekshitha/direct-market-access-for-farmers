@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="signup">Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Load Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2.39.7"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="home-header">
+        <div class="header-content">
+            <h1 data-i18n="appTitle">Farm Connect</h1>
+            <div class="header-nav">
+                <div class="main-nav">
+                    <a href="index.html" class="nav-link" data-i18n="home">Home</a>
+                    <a href="login.html" class="nav-link" data-i18n="login">Login</a>
+                    <a href="signup.html" class="nav-link active" data-i18n="signup">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1 data-i18n="signupTitle">Create Account</h1>
+            <p class="subtitle" data-i18n="signupSubtitle">Join Farm Connect today</p>
+
+            <!-- Sign Up Form -->
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="fullName" data-i18n="fullNameLabel">Full Name</label>
+                    <div class="input-group">
+                        <input type="text" id="fullName" placeholder="Enter your full name" data-i18n-placeholder="fullNamePlaceholder" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" data-i18n="phoneLabel">Phone Number</label>
+                    <div class="input-group">
+                        <input type="tel" id="phone" placeholder="Enter your phone number with country code (e.g., +91)" data-i18n-placeholder="phonePlaceholder" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="userType" data-i18n="userTypePrompt">I am a</label>
+                    <div class="input-group">
+                        <select id="userType" required>
+                            <option value="" data-i18n="userTypePlaceholder">Select user type</option>
+                            <option value="farmer" data-i18n="farmerOption">Farmer</option>
+                            <option value="buyer" data-i18n="buyerOption">Buyer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupState" data-i18n="stateLabel">State</label>
+                    <div class="input-group">
+                        <select id="signupState" required>
+                            <option value="" data-i18n="statePlaceholder">Select State</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signupDistrict" data-i18n="districtLabel">District</label>
+                    <div class="input-group">
+                        <select id="signupDistrict" required disabled>
+                            <option value="" data-i18n="districtPlaceholder">Select District</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="villageCity" data-i18n="villageCityLabel">Village name/City name</label>
+                    <div class="input-group">
+                        <input type="text" id="villageCity" placeholder="Enter your village or city" data-i18n-placeholder="villageCityPlaceholder" required>
+                    </div>
+                </div>
+
+                <div id="otpGroup" class="form-group" style="display: none;">
+                    <label for="otp" data-i18n="otpLabel">OTP</label>
+                    <div class="input-group">
+                        <input type="text" id="otp" placeholder="Enter OTP" data-i18n-placeholder="otpPlaceholder" maxlength="6">
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn" data-i18n="getOtpBtn">Get OTP</button>
+
+                <div class="auth-links">
+                    <p><span data-i18n="alreadyHaveAccount">Already have an account?</span> <a href="login.html" data-i18n="login">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="auth.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

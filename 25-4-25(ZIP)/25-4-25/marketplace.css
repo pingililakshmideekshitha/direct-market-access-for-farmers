@@ -1,0 +1,752 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* Extend content background to full page */
+    background: #f5f5f5;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Content Area Styles */
+.marketplace-content {
+    margin-top: 140px;
+    width: 100%;
+    padding: 2rem;
+    /* Set full section background below nav */
+    background-color: #f5f5f5;
+}
+
+/* About section layout: adjust default text color for visibility */
+.content-section.about-platform {
+    color: white;
+}
+
+.content-section.about-platform h2,
+.content-section.about-platform h3,
+.content-section.about-platform p,
+.content-section.about-platform label {
+    color: white;
+}
+
+/* Icon color in browse and activity sections */
+.content-section.about-platform i {
+    color: #2ecc71; /* pleasant green shade over gradient */
+}
+
+/* Navigation Styles */
+.nav-container {
+    /* Match main page theme */
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.marketplace-nav {
+    display: flex;
+    gap: 1rem;
+    max-width: 1200px;
+    /* left align nav items */
+    margin: 0;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: transparent;
+    color: white;
+}
+
+.nav-button.active {
+    background-color: transparent;
+    color: white;
+    font-weight: normal;
+}
+
+/* Content Styles */
+.content-section {
+    display: none;
+    /* Match homepage 'About Our Platform' background */
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Empty State Styles */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 12px;
+    margin: 0;
+    min-height: 250px;
+}
+
+.empty-state i {
+    font-size: 3.5rem;
+    color: #000;
+    margin-bottom: 1.5rem;
+}
+
+.empty-state h2 {
+    font-size: 1.75rem;
+    color: #000;
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+}
+
+/* Empty state message color */
+.empty-state p {
+    color: #000 !important;
+}
+
+#noCropsMessage {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Ensure 'No farmers have added their crops yet' message is black */
+#browseCrops .empty-state p {
+    color: #000 !important;
+}
+
+/* Activity Header Styles */
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    background: transparent;
+}
+
+.activity-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.add-crop-button {
+    background-color: white;
+    color: #2c3e50;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.add-crop-button:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-1px);
+}
+
+/* Add Crop Button Icon Color */
+.add-crop-button i {
+    color: black !important;
+}
+
+/* Form Styles */
+#addCropForm {
+    display: none;
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 100%;
+}
+
+#addCropForm.active {
+    display: block;
+}
+
+#addCropForm .form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+#addCropForm label {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+#addCropForm input,
+#addCropForm select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+#addCropForm input[type="file"] {
+    padding: 0.6rem;
+    border: 2px dashed #e0e0e0;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+#addCropForm input:focus,
+#addCropForm select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+#addCropForm input::placeholder {
+    color: #95a5a6;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.submit-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+.cancel-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.cancel-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* Form in edit mode */
+#addCropForm.edit-mode .submit-button {
+    background-color: #27ae60;
+}
+
+#addCropForm.edit-mode .submit-button:hover {
+    background-color: #219a52;
+}
+
+/* Crop Grid */
+.crops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Crop Card */
+.crop-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Image Container */
+.crop-card .image-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Crop Details */
+.crop-card .crop-details {
+    padding: 1rem;
+    color: #333;
+}
+
+/* Crop Info List */
+.crop-card .crop-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+}
+.crop-card .crop-info-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* Crop Cards */
+.crops-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 1rem;
+    background: transparent;
+}
+
+.crop-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    aspect-ratio: 1;
+    position: relative;
+    width: 100%;
+}
+
+.crop-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.crop-card .image-container {
+    position: relative;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    background-color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crop-card .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-color: #e2e8f0;
+}
+
+.crop-card .image-container img[src*="placehold.co"] {
+    object-fit: contain;
+    padding: 2rem;
+}
+
+.crop-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 6px;
+    padding: 4px;
+    z-index: 10;
+}
+
+.crop-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.edit-button,
+.delete-button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-button {
+    color: #3949ab;
+}
+
+.edit-button:hover {
+    background-color: #3949ab;
+    color: white;
+}
+
+.delete-button {
+    color: #dc3545;
+}
+
+.delete-button:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-button i,
+.delete-button i {
+    font-size: 1rem;
+}
+
+.crop-details {
+    padding: 1.5rem;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.crop-details h3 {
+    margin: 0 0 0.75rem 0;
+    color: #2c3e50;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.crop-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-grow: 1;
+}
+
+.crop-info p {
+    margin: 0;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.crop-info p:last-child {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+/* Hide edit/delete buttons in Browse Crops section */
+#browseCrops .crop-actions {
+    display: none !important;
+}
+
+/* Show edit/delete buttons only in Your Activity section */
+#yourActivity .crop-actions {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Ensure consistent layout in both sections */
+#browseCrops .crops-grid,
+#yourActivity .crops-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+/* Empty state adjustments */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+}
+
+/* Override text style in Disease Detector section */
+#diseaseDetector p {
+    color: #000;
+    /* Match main page hero title size */
+    font-size: 2.5rem;
+}
+
+/* Center and add top margin to Analyze Now button in Disease Detector section */
+#diseaseDetector {
+    text-align: center;
+}
+#diseaseDetector .cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .crops-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .crops-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .crops-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .content-section {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .marketplace-content {
+        padding: 1rem;
+        margin-top: 138px;
+    }
+
+    .crop-details {
+        padding: 1rem;
+    }
+    
+    .crop-details h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .crop-info {
+        gap: 0.5rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 2vh auto;
+    }
+
+    #addCropForm {
+        padding: 1.5rem;
+    }
+    
+    #addCropForm .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    #addCropForm input,
+    #addCropForm select {
+        padding: 0.7rem;
+    }
+
+    .activity-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .activity-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .crops-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .crop-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* Override section headings color in marketplace */
+#browseCrops h2,
+#yourActivity h2 {
+    color: #333 !important;
+    margin-bottom: 1rem;
+}
+
+/* Crop card title and info text */
+.crop-card .crop-details h3,
+.crop-card .crop-info-list li {
+    color: #333 !important;
+}
+
+/* Crop action icons: edit & delete */
+.crop-card .crop-actions i {
+    color: #000 !important;
+}
+
+/* Align Cancel to left of Save in Add/Edit form */
+.crop-form .form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.crop-form .form-actions .cancel-button {
+    order: 1;
+}
+
+.crop-form .form-actions .save-button {
+    order: 2;
+}
+
+/* Ensure Cancel and Save buttons share styling and equal width */
+.crop-form .form-actions button {
+    flex: 1;
+    min-width: 0;
+    width: 50%;
+    box-sizing: border-box;
+}
+.crop-form .form-actions button.cancel-button,
+.crop-form .form-actions button.save-button {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #3498db;
+    background-color: #3498db;
+    color: white;
+}
+.crop-form .form-actions button.cancel-button {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+/* Hide farmer-only elements by default, JS will toggle visibility */
+.farmer-only {
+    display: none;
+}
+
+/* Ensure farmer-only sections hide by default and only show when active */
+.content-section.farmer-only {
+    display: none !important;
+}
+.content-section.farmer-only.active {
+    display: block !important;
+}
+
+/* Override filter labels color in about-platform section */
+.content-section.about-platform .filter-group label { 
+    color: #000 !important; 
+    white-space: nowrap;
+}
+
+/* Dropdown styling in Market Price section */
+.content-section.about-platform .filter-group select {
+  padding: 0.5rem 0.75rem;
+  margin-right: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+  width: 220px;
+  min-width: unset;
+}
+
+/* Custom crop input styling */
+.content-section.about-platform .filter-group input#customCropInput {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  margin-left: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  font-size: 1rem;
+  width: 220px;
+}
+
+/* Get Accurate Price button styling */
+.content-section.about-platform .filter-group button#getPriceBtn {
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.content-section.about-platform .filter-group button#getPriceBtn:hover {
+  background-color: #2980b9;
+}
+
+/* Action button container styling */
+.content-section.about-platform .action-group {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Reduce size of Get Accurate Price button */
+.content-section.about-platform .action-group .cta-button {
+  padding: 0.4rem 0.8rem;
+  font-size: 1.1rem;
+}
+
+/* Center filter-group container */
+.content-section.about-platform .filter-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Market price result text color override */
+#marketPriceTable, .content-section.about-platform .market-price-table {
+  color: #000 !important;
+}
+
+/* Force black text for market price results */
+#marketPriceTable p {
+  color: #000 !important;
+}
+
+/* Market price results container styling */
+.content-section.about-platform .market-price-table {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.content-section.about-platform .market-price-table p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #333;
+}

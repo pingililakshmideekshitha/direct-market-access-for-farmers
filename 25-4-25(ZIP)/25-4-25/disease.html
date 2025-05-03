@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Disease Detector</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,">
+    <link rel="stylesheet" href="disease.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Crop Disease Detector</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Detect Crop Diseases with AI</h1>
+                <p>Upload an image of your crop and get instant disease detection and recommendations</p>
+                <div class="upload-container">
+                    <div class="upload-area" id="dropZone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & Drop your image here or</p>
+                        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/jpg,image/webp" hidden>
+                        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">Choose File</button>
+                        <p class="file-info">Supported formats: JPG, PNG, WebP (Max size: 5MB)</p>
+                    </div>
+                    <div class="preview-container" id="previewContainer" style="display: none;">
+                        <img id="previewImage" src="#" alt="Preview">
+                        <button class="analyze-btn" onclick="analyzeImage()">Analyze Image</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="results-section" style="display: none;">
+            <h2>Analysis Results</h2>
+            <div class="results-container">
+                <div class="analysis-visualization">
+                    <div class="analyzed-image-container">
+                        <canvas id="analyzedImageCanvas"></canvas>
+                        <p class="detection-label">Disease Detection Visualization</p>
+                    </div>
+                </div>
+                <div class="result-cards">
+                    <div class="result-card">
+                        <h3>Disease Name</h3>
+                        <p id="diseaseName">-</p>
+                    </div>
+                    <div class="result-card">
+                        <h3>Cause</h3>
+                        <p id="cause">-</p>
+                    </div>
+                    <div class="result-card">
+                        <h3>Suggestions</h3>
+                        <p id="suggestions">-</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About Our Technology</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI-Powered Detection</h3>
+                    <p>Our advanced machine learning model can identify multiple crop diseases with high accuracy.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Plant Health</h3>
+                    <p>Early detection of diseases helps prevent crop loss and maintain healthy yields.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data-Driven</h3>
+                    <p>Our system continuously learns and improves from new data to provide better results.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Upload Image</h3>
+                    <p>Take a clear photo of the affected crop and upload it to our system.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>AI Analysis</h3>
+                    <p>Our AI model analyzes the image to identify potential diseases.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get Results</h3>
+                    <p>Receive instant diagnosis and recommendations for treatment.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Crop Disease Detector. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load Supabase JS from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Load our script after Supabase -->
+    <script src="disease.js"></script>
+</body>
+</html> 

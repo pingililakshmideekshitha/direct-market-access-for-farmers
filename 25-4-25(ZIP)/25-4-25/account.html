@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="profile">Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="marketplace.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .profile-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Profile photo wrapper handles border and size */
+        .profile-photo-wrapper {
+            width: 150px;
+            height: 150px;
+            border: 3px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-sizing: border-box;
+            overflow: visible; /* allow camera icon to be fully visible */
+        }
+        /* Inner placeholder or image fills wrapper */
+        .profile-photo-wrapper .profile-photo {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 50%;
+            margin: 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            margin-bottom: 2rem;
+        }
+
+        .info-group {
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .logout-button {
+            padding: 0.75rem;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+
+        .profile-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .edit-button {
+            padding: 0.75rem;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .edit-button:hover {
+            background-color: #1abc9c;
+        }
+
+        /* Make buttons equal width */
+        .profile-actions button {
+            flex: 1;
+            min-width: 0;
+            width: 50%;
+            height: 3rem;
+            box-sizing: border-box;
+        }
+
+        /* Style inputs in Edit Profile Form to match display fields */
+        #editProfileForm .info-group {
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+        #editProfileForm .info-group label.info-label {
+            margin-bottom: 0.25rem;
+            color: #666;
+            font-weight: 600;
+        }
+        #editProfileForm .info-group input {
+            width: 100%;
+            padding: 0.25rem 0;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            border: none;
+            background: none;
+            outline: none;
+        }
+
+        /* Center content inside photo wrapper */
+        .profile-photo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* ensure positioning context */
+        }
+        /* Remove default margin and include border in size */
+        .profile-photo-wrapper .profile-photo {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* Default placeholder uses image instead of icon */
+        .profile-photo-wrapper .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Zoom default placeholder image */
+        #profilePlaceholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.2);
+            transform-origin: center center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="home-header">
+        <div class="header-content">
+            <h1 data-i18n="appTitle">Farm Connect</h1>
+            <div class="header-nav">
+                <div class="main-nav">
+                    <a href="index.html" class="nav-link" data-i18n="home">Home</a>
+                    <a href="marketplace.html" class="nav-link" data-i18n="marketplace">Marketplace</a>
+                    <a href="account.html" class="nav-link active" data-i18n="profile">Profile</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-photo-wrapper" style="position:relative; width:150px; height:150px; margin:0 auto 1rem;">
+                    <!-- Placeholder or image -->
+                    <div id="profilePlaceholder" class="profile-photo" style="display:flex; align-items:center; justify-content:center; width:100%; height:100%; border-radius:50%;">
+                        <img src="user-icon.png" data-i18n-alt="defaultUserIconAlt" alt="Default User Icon" />
+                    </div>
+                    <img id="profilePhoto" class="profile-photo" style="display:none; width:100%; height:100%; border-radius:50%; object-fit:cover;" data-i18n-alt="profilePhotoAlt" alt="Profile Photo">
+                    <!-- Camera icon for photo select -->
+                    <div id="avatarPicker" class="camera-icon" style="position:absolute; bottom:-5px; right:-5px; background:rgba(255,255,255,0.8); border-radius:50%; padding:5px; cursor:pointer; display:none;">
+                        <i class="fas fa-camera" style="font-size:20px; color:#000;"></i>
+                    </div>
+                    <!-- Hidden file input -->
+                    <input type="file" id="editAvatar" accept="image/*" style="display:none;" />
+                    <!-- Avatar action dropdown -->
+                    <div id="avatarMenu" class="avatar-menu" style="display:none; position:absolute; top:100%; right:0; background:#fff; border:1px solid #ccc; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,0.1); z-index:10;">
+                        <div id="updatePhoto" class="avatar-menu-item" data-i18n="updatePhotoMenuItem" style="padding:0.5rem 1rem; cursor:pointer;">Update Photo</div>
+                        <div id="removePhoto" class="avatar-menu-item" data-i18n="removePhotoMenuItem" style="padding:0.5rem 1rem; cursor:pointer;">Remove Photo</div>
+                    </div>
+                </div>
+                <h2 data-i18n="profileTitle">Profile</h2>
+            </div>
+            
+            <div class="profile-info">
+                <div class="info-group">
+                    <div class="info-label" data-i18n="fullNameLabel">Full Name</div>
+                    <div class="info-value" id="nameDisplay" data-i18n="loadingText">Loading...</div>
+                </div>
+                
+                <div class="info-group">
+                    <div class="info-label" data-i18n="phoneLabel">Phone Number</div>
+                    <div class="info-value" id="phoneDisplay" data-i18n="loadingText">Loading...</div>
+                </div>
+                
+                <div class="info-group">
+                    <div class="info-label" data-i18n="userTypeLabel">User Type</div>
+                    <div class="info-value" id="userTypeDisplay" data-i18n="loadingText">Loading...</div>
+                </div>
+                
+                <div class="info-group">
+                    <div class="info-label" data-i18n="stateLabel">State</div>
+                    <div class="info-value" id="stateDisplay" data-i18n="notSet">Not set</div>
+                </div>
+                
+                <div class="info-group">
+                    <div class="info-label" data-i18n="districtLabel">District</div>
+                    <div class="info-value" id="districtDisplay" data-i18n="notSet">Not set</div>
+                </div>
+                
+                <div class="info-group">
+                    <div class="info-label" data-i18n="villageCityLabel">Village/City</div>
+                    <div class="info-value" id="villageCityDisplay" data-i18n="notSet">Not set</div>
+                </div>
+            </div>
+
+            <div class="profile-actions">
+                <button class="edit-button" data-i18n="editProfileBtn">
+                    <i class="fas fa-edit"></i> Edit Profile
+                </button>
+                <button class="logout-button" data-i18n="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </button>
+            </div>
+            <!-- Edit Profile Form -->
+            <form id="editProfileForm" style="display:none;">
+                <div class="info-group">
+                    <label class="info-label" for="editName" data-i18n="fullNameLabel">Full Name</label>
+                    <input type="text" id="editName" class="info-value" />
+                </div>
+                <div class="info-group">
+                    <label class="info-label" for="editPhone" data-i18n="phoneLabel">Phone Number</label>
+                    <input type="text" id="editPhone" class="info-value" />
+                </div>
+                <div class="info-group">
+                    <label class="info-label" for="editState" data-i18n="stateLabel">State</label>
+                    <input type="text" id="editState" class="info-value" />
+                </div>
+                <div class="info-group">
+                    <label class="info-label" for="editDistrict" data-i18n="districtLabel">District</label>
+                    <input type="text" id="editDistrict" class="info-value" />
+                </div>
+                <div class="info-group">
+                    <label class="info-label" for="editVillageCity" data-i18n="villageCityLabel">Village/City</label>
+                    <input type="text" id="editVillageCity" class="info-value" />
+                </div>
+                <div class="profile-actions">
+                    <button type="button" id="cancelEditProfile" class="cancel-button" data-i18n="cancelEditProfileBtn">Cancel</button>
+                    <button type="submit" class="save-button" data-i18n="saveChangesBtn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Load Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2.39.7"></script>
+    
+    <!-- Initialize Supabase -->
+    <script type="module">
+        const supabaseUrl = 'https://adtyjmhqupoqxamudhqe.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkdHlqbWhxdXBvcXhhbXVkaHFlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzMjk4NjcsImV4cCI6MjA2MDkwNTg2N30.0Ugy2oKdeifq_a8XPXWTZuCzuNzQ5VFmUi5HEhP4zyA';
+        window.supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+    </script>
+    
+    <!-- Load our JavaScript -->
+    <script src="account.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

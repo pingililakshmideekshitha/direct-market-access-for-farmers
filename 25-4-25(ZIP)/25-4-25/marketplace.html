@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="marketplaceTitle">Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="marketplace.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="home-header">
+        <div class="header-content">
+            <h1 data-i18n="appTitle">Farm Connect</h1>
+            <div class="header-nav">
+                <div class="main-nav">
+                    <a href="index.html" class="nav-link" data-i18n="home">Home</a>
+                    <a href="marketplace.html" class="nav-link active" data-i18n="marketplace">Marketplace</a>
+                    <a href="account.html" class="nav-link active" data-i18n="profile">
+                        <i class="fas fa-user"></i>
+                        Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav class="marketplace-nav">
+            <button class="nav-button active" data-section="browseCrops" data-i18n="browseCrops">Browse Crops</button>
+            <button class="nav-button" data-section="marketPrice" data-i18n="marketPrice">Market Price</button>
+            <button class="nav-button farmer-only" data-section="yourActivity" style="display: none;" data-i18n="yourActivity">Your Activity</button>
+            <button class="nav-button farmer-only" data-section="diseaseDetector" style="display: none;" data-i18n="diseaseDetector">Disease Detector</button>
+        </nav>
+    </div>
+
+    <!-- Content Area -->
+    <div class="marketplace-content">
+        <!-- Browse Crops Section -->
+        <section id="browseCrops" class="content-section active about-platform">
+            <!-- Browse Filters -->
+            <div class="filter-group browse-filters">
+                <label for="browseStateSelect" data-i18n="stateLabel">State</label>
+                <select id="browseStateSelect"><option value="" data-i18n="statePlaceholder">Select State</option></select>
+                <label for="browseDistrictSelect" data-i18n="districtLabel">District</label>
+                <select id="browseDistrictSelect"><option value="" data-i18n="districtPlaceholder">Select District</option></select>
+                <label for="browseCropSelect" data-i18n="cropNameLabel">Crop Name</label>
+                <select id="browseCropSelect"><option value="" data-i18n="selectCrop">Select a crop</option></select>
+            </div>
+            <div class="crops-grid">
+                <div class="empty-state">
+                    <i class="fas fa-seedling"></i>
+                    <h2 data-i18n="noCropsTitle">No Crops Available</h2>
+                    <p data-i18n="noCropsDesc">No farmers have added their crops yet. Check back later!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Price Section -->
+        <section id="marketPrice" class="content-section about-platform">
+            <div id="marketPriceContent" class="market-price-container">
+                <div class="filter-group">
+                    <label for="stateSelect" data-i18n="stateLabel">State</label>
+                    <select id="stateSelect"><option value="" data-i18n="statePlaceholder">Select State</option></select>
+                    <label for="districtSelect" data-i18n="districtLabel">District</label>
+                    <select id="districtSelect"><option value="" data-i18n="districtPlaceholder">Select District</option></select>
+                    <label for="cropSelect" data-i18n="cropSelectLabel">Crop Name</label>
+                    <select id="cropSelect"><option value="" data-i18n="selectCrop">Select Crop</option></select>
+                    <input type="text" id="customCropInput" placeholder="Enter custom crop name" data-i18n-placeholder="customCropPlaceholder" style="display:none; margin-left:0.5rem;" />
+                </div>
+                <div class="action-group">
+                    <button id="getPriceBtn" type="button" class="cta-button" data-i18n="getPriceBtn">Get Accurate Price</button>
+                </div>
+                <div id="marketPriceTable" class="market-price-table">
+                    <!-- Price results will be rendered here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Your Activity Section (Only visible to farmers) -->
+        <section id="yourActivity" class="content-section about-platform">
+            <div class="activity-header">
+                <button class="add-crop-button" id="addCropBtn">
+                    <i class="fas fa-plus"></i> <span data-i18n="addCropBtn">Add Crop</span>
+                </button>
+            </div>
+            
+            <!-- Add Crop Form -->
+            <form id="addCropForm" class="crop-form" style="display: none;">
+                <div class="form-group">
+                    <label for="cropName" data-i18n="cropNameLabel">Crop Name</label>
+                    <select id="cropName" required>
+                        <option value="" data-i18n="selectCrop">Select a crop</option>
+                        <option value="Rice" data-i18n="rice">Rice</option>
+                        <option value="Wheat" data-i18n="wheat">Wheat</option>
+                        <option value="Maize" data-i18n="maize">Maize</option>
+                        <option value="Sorghum" data-i18n="sorghum">Sorghum</option>
+                        <option value="Pearl Millet (Bajra)" data-i18n="pearlMillet">Pearl Millet (Bajra)</option>
+                        <option value="Finger Millet (Ragi)" data-i18n="fingerMillet">Finger Millet (Ragi)</option>
+                        <option value="Barley" data-i18n="barley">Barley</option>
+                        <option value="Chickpea (Gram)" data-i18n="chickpea">Chickpea (Gram)</option>
+                        <option value="Pigeon Pea (Tur)" data-i18n="pigeonPea">Pigeon Pea (Tur)</option>
+                        <option value="Green Gram (Moong)" data-i18n="greenGram">Green Gram (Moong)</option>
+                        <option value="Black Gram (Urad)" data-i18n="blackGram">Black Gram (Urad)</option>
+                        <option value="Lentil" data-i18n="lentil">Lentil</option>
+                        <option value="Groundnut" data-i18n="groundnut">Groundnut</option>
+                        <option value="Rapeseed & Mustard" data-i18n="rapeseedMustard">Rapeseed & Mustard</option>
+                        <option value="Soybean" data-i18n="soybean">Soybean</option>
+                        <option value="Sesame (Til)" data-i18n="sesame">Sesame (Til)</option>
+                        <option value="Sunflower" data-i18n="sunflower">Sunflower</option>
+                        <option value="Sugarcane" data-i18n="sugarcane">Sugarcane</option>
+                        <option value="Cotton" data-i18n="cotton">Cotton</option>
+                        <option value="Tea" data-i18n="tea">Tea</option>
+                        <option value="Coffee" data-i18n="coffee">Coffee</option>
+                        <option value="Jute" data-i18n="jute">Jute</option>
+                        <option value="Potato" data-i18n="potato">Potato</option>
+                        <option value="Tomato" data-i18n="tomato">Tomato</option>
+                        <option value="Onion" data-i18n="onion">Onion</option>
+                        <option value="Banana" data-i18n="banana">Banana</option>
+                        <option value="Mango" data-i18n="mango">Mango</option>
+                        <option value="custom" data-i18n="customCrop">Custom</option>
+                    </select>
+                </div>
+                <div class="form-group" id="customCropGroup" style="display: none;">
+                    <label for="customCropName" data-i18n="customCropNameLabel">Custom Crop Name</label>
+                    <input type="text" id="customCropName" placeholder="Enter custom crop name" data-i18n-placeholder="customCropPlaceholder">
+                </div>
+
+                <div class="form-group">
+                    <label for="cropPhoto" data-i18n="cropPhotoLabel">Crop Photo</label>
+                    <input type="file" id="cropPhoto" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity" data-i18n="quantityLabel">Quantity</label>
+                    <input type="number" id="quantity" required min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="quantityType" data-i18n="quantityTypeLabel">Quantity Type</label>
+                    <select id="quantityType" required>
+                        <option value="" data-i18n="quantityUnitPlaceholder">Select unit</option>
+                        <option value="kg" data-i18n="unitKg">Kilogram (kg)</option>
+                        <option value="quintal" data-i18n="unitQuintal">Quintal (100kg)</option>
+                        <option value="tonne" data-i18n="unitTonne">Tonne (1000kg)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="price" data-i18n="priceLabel">Price (₹)</label>
+                    <input type="number" id="price" required min="0" step="0.01">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="formCancelBtn" class="cancel-button" data-i18n="cancelBtn">Cancel</button>
+                    <button type="submit" id="formSubmitBtn" class="save-button" data-i18n="saveCropBtn">Save Crop</button>
+                </div>
+            </form>
+            <!-- User's crops grid -->
+            <div class="crops-grid">
+                <!-- Cards will be inserted here -->
+            </div>
+        </section>
+
+        <!-- Disease Detector Section -->
+        <section id="diseaseDetector" class="content-section about-platform farmer-only">
+            <p data-i18n="diseaseDetectorDesc">Use our AI-powered tool to analyze your crop and detect potential diseases instantly.</p>
+            <button id="analyzeBtn" class="cta-button" data-i18n="analyzeNowBtn" onclick="window.location.href='disease.html'">Analyze Now</button>
+        </section>
+    </div>
+
+    <!-- Load Supabase first -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <!-- Then load our modules: core translations first -->
+    <script type="module" src="script.js"></script>
+    <script type="module" src="marketplace.js"></script>
+</body>
+</html>

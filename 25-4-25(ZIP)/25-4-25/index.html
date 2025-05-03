@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pageTitle">Farm Connect - Direct Farm-to-Market Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="home-header">
+        <div class="header-content">
+            <h1 data-i18n="appTitle">Farm Connect</h1>
+            <div class="header-nav">
+                <!-- Before Login -->
+                <div class="auth-buttons" id="loggedOutState">
+                    <a href="index.html" class="nav-link active" data-i18n="home">Home</a>
+                    <a href="login.html" class="nav-link" data-i18n="login">Login</a>
+                    <a href="signup.html" class="nav-link" data-i18n="signup">Sign Up</a>
+                </div>
+                <!-- After Login -->
+                <div class="main-nav" id="loggedInState" style="display: none;">
+                    <a href="index.html" class="nav-link active" data-i18n="home">Home</a>
+                    <a href="marketplace.html" class="nav-link" data-i18n="marketplace">Marketplace</a>
+                    <a href="account.html" class="nav-link" data-i18n="profile">
+                        <i class="fas fa-user"></i>
+                        Profile
+                    </a>
+                </div>
+                <!-- Language Picker visible always -->
+                <select id="languagePicker" class="nav-link" style="margin-left:8px;">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="te">తెలుగు</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1 data-i18n="heroTitle">Connect Farms to Markets with AI</h1>
+            <p class="hero-subtitle" data-i18n="heroSubtitle">Bridge the gap between farmers and buyers — revolutionizing agricultural trade</p>
+        </section>
+
+        <div class="cta-section">
+            <button class="cta-button" id="getStartedBtn" data-i18n="getStartedBtn">Get Started</button>
+        </div>
+
+        <section id="about" class="about-platform">
+            <h2 data-i18n="aboutTitle">About Our Platform</h2>
+            <div class="platform-benefits">
+                <div class="benefit">
+                    <div class="benefit-icon">🤝</div>
+                    <h3 data-i18n="benefit1Title">Direct Connection</h3>
+                    <p data-i18n="benefit1Desc">Farm Connect transforms agricultural commerce by connecting farmers directly with buyers, eliminating unnecessary intermediaries.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">⚖️</div>
+                    <h3 data-i18n="benefit2Title">Fair Trade</h3>
+                    <p data-i18n="benefit2Desc">Our platform ensures farmers receive fair prices for their produce, while buyers gain access to fresh, high-quality products at competitive rates.</p>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🌱</div>
+                    <h3 data-i18n="benefit3Title">Sustainable Growth</h3>
+                    <p data-i18n="benefit3Desc">This efficient model creates value for everyone involved, promotes sustainable farming, and strengthens the farm-to-market supply chain.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <h2 data-i18n="howItWorksTitle">How It Works</h2>
+            <div class="workflow">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 data-i18n="step1Title">Register & List</h3>
+                    <p data-i18n="step1Desc">Farmers create their profile and list their produce with detailed information about quality and quantity.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 data-i18n="step2Title">Connect & Negotiate</h3>
+                    <p data-i18n="step2Desc">Buyers browse listings and connect directly with farmers to negotiate prices and terms.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 data-i18n="step3Title">Trade & Grow</h3>
+                    <p data-i18n="step3Desc">Complete secure transactions and build long-term relationships for sustainable growth.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-i18n="footerText">&copy; 2024 Farm Connect. All rights reserved.</p>
+    </footer>
+
+    <!-- Auth state and navigation handling -->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
